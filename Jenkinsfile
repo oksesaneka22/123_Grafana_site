@@ -1,4 +1,21 @@
+pipeline {
+    agent any
 
+    stages {
+        stage('run') {
+            steps {
+                script {
+                    // Use 'sh' step to execute shell commands
+                    sh 'pwd'
+                    sh 'ls'
+                    sh 'terraform init -upgrade'
+                    sh 'terraform plan'
+                    sh 'terraform apply -auto-approve'
+                }
+            }
+        }
+    }
+}
 
 
 
